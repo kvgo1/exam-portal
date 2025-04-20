@@ -1,8 +1,9 @@
 package com.exam.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="roles")
@@ -11,8 +12,18 @@ public class Role {
     @Id
     private int roleId;
     private String roleName;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "")
+    private Set<UserRole> userRoles=new HashSet<>();
 
     public Role() {
+    }
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
     public Role(int roleId, String roleName) {
