@@ -10,9 +10,9 @@ import java.util.Set;
 
 public class Role {
     @Id
-    private int roleId;
+    private Long roleId;
     private String roleName;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "role")
     private Set<UserRole> userRoles=new HashSet<>();
 
     public Role() {
@@ -26,16 +26,16 @@ public class Role {
         this.userRoles = userRoles;
     }
 
-    public Role(int roleId, String roleName) {
+    public Role(long roleId, String roleName) {
         this.roleId = roleId;
         this.roleName = roleName;
     }
 
-    public int getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
