@@ -4,13 +4,13 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
-  standalone: true, // ✅ REQUIRED for standalone components
+  standalone: true,
   imports: [
     RouterOutlet,
-    MatButtonModule // ✅ Add any Material modules you're using
+    MatButtonModule
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'] // ❌ typo fixed: should be "styleUrls" (plural)
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'exam-front';
