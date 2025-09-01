@@ -2,17 +2,21 @@ package com.exam.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static jakarta.persistence.CascadeType.*;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements UserDetails {
 @Id
-@GeneratedValue(strategy= GenerationType.AUTO)
+@GeneratedValue(strategy= GenerationType.IDENTITY)
 private Long id;
 private String username;
 private String password;
@@ -70,8 +74,39 @@ private String profile;
         return username;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<Authority> set=new HashSet<>();
+        this.userRoles.forEach(userRole -> {
+
+            set.add(new Authority(userRole.getRole().getRoleName()));
+
+        });
+        return set;
     }
 
     public String getPassword() {

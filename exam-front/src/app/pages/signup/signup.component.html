@@ -3,63 +3,97 @@
 <div class="bootstrap-wrapper">
   <div class="container">
     <div class="row" style="margin-top: 20px">
+     
       <!-- animation -->
       <!-- ✅ FINAL: Centered Lottie animation block -->
-<div class="w-100 d-flex justify-content-center align-items-center" style="height: 300px;">
-  <dotlottie-player
-    src="https://lottie.host/f3ae32a6-3d6b-45bb-a27b-dce1eb8efc8c/B4q7bKs6jF.lottie"
-    background="transparent"
-    speed="1"
-    style="width: 300px; height: 300px;"
-    loop
-    autoplay>
-  </dotlottie-player>
+       
+<div class="col-12">
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;">
+    <dotlottie-player
+      src="https://lottie.host/f3ae32a6-3d6b-45bb-a27b-dce1eb8efc8c/B4q7bKs6jF.lottie"
+      background="transparent"
+      speed="1"
+      style="width: 300px; height: 300px;"
+      loop
+      autoplay>
+    </dotlottie-player>
+  </div>
 </div>
+
 
 
       <div class="col-md-6 offset-md-3">
         <h1 class="text-center">Register here</h1>
-        <form>
+        <!-- {{ user| json}} -->
+        <form (ngSubmit)="formSubmit()">
             <!-- Username -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput placeholder="Enter here" />
+            <input 
+            required
+            [(ngModel)]="user.username"
+            name="username"
+            matInput placeholder="Enter here" />
+            <mat-hint>Username must be unique.</mat-hint>
           </mat-form-field>
           <!-- password -->
            <mat-form-field class="full-width" appearance="outline">
             <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="Enter here" />
+            <input
+            required
+            [(ngModel)]="user.password"
+            name="password"
+            type="password" matInput placeholder="Enter here" />
           </mat-form-field>
           <!-- First name -->
            <mat-form-field class="full-width" appearance="outline">
             <mat-label>First Name</mat-label>
-            <input type="password" matInput placeholder="Enter here" />
+            <input
+            required
+            [(ngModel)]="user.firstname"
+            name="firstname"
+             matInput placeholder="Enter here" />
           </mat-form-field>
           <!-- Last name -->
            <mat-form-field class="full-width" appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input type="password" matInput placeholder="Enter here" />
+            <input  
+            required
+            [(ngModel)]="user.lastname"
+            name="lastname"
+            matInput placeholder="Enter here" />
           </mat-form-field>
           <!-- Email -->
            <mat-form-field class="full-width" appearance="outline">
             <mat-label>Email Address</mat-label>
-            <input type="email" matInput placeholder="Enter here" />
+            <input 
+            required
+             [(ngModel)]="user.email"
+              name="email"
+             type="email" matInput placeholder="Enter here" />
           </mat-form-field>
           <!-- Phone number -->
            <mat-form-field class="full-width" appearance="outline">
             <mat-label>Contact number</mat-label>
-            <input type="number" matInput placeholder="Enter here" />
+            <input 
+            required
+            [(ngModel)]="user.phone"
+            name="phone"
+            type="number" matInput placeholder="Enter here" />
           </mat-form-field>
 
           <div class="container text-center">
-             <button mat-raised-button color="primary" >Register</button>
+             <button mat-raised-button type="submit" color="primary" >Register</button>
              <button style="margin-left: 20px;" mat-raised-button color="accent" >Clear</button>
 
           </div>
 
 
         </form>
+       
       </div>
+    
     </div>
   </div>
 </div>
+

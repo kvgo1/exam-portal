@@ -1,0 +1,13 @@
+.example-spacer{
+    flex:1 1 auto;
+}
+mat-toolbar {
+  color: white; /* optional: ensure text/icons are visible on primary bg */
+}
+
+.example-icon {
+  background: transparent !important;   /* removes background */
+  box-shadow: none !important;          /* removes any elevation/shadow */
+  border: none !important;              /* no border */
+  outline: none;
+}

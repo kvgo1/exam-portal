@@ -1,17 +1,21 @@
 package com.exam.service.impl;
 
+import com.exam.model.Role;
 import com.exam.model.User;
 import com.exam.model.UserRole;
 import com.exam.repo.RoleRepository;
 import com.exam.repo.UserRepository;
 import com.exam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
 public class UserServiceImpl implements UserService {
 
+    //@Autowired
+    //private BCryptPasswordEncoder passwordEncoder;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -26,7 +30,13 @@ public class UserServiceImpl implements UserService {
             System.out.println("User is already there!!");
             throw new Exception("User already present!!");
         }
+
+
         else {
+
+            //encode
+
+            //user.setPassword(passwordEncoder.encode(user.getPassword()));
             //user  create
             for(UserRole ur:userRoles)
             {
@@ -47,4 +57,10 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long userId) {
         this.userRepository.deleteById(userId);
     }
+    @Override
+    public Role getRoleByName(String roleName) {
+        return this.roleRepository.findByRoleName(roleName);
+    }
 }
+
+

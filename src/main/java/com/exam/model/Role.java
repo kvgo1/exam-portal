@@ -10,7 +10,10 @@ import java.util.Set;
 
 public class Role {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // MySQL safe choice
+    @Column(name = "role_id")   // explicitly name the column
     private Long roleId;
+    @Column(name = "role_name", nullable = false, unique = true)  // optional but good
     private String roleName;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "role")
     private Set<UserRole> userRoles=new HashSet<>();

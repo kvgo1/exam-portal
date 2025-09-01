@@ -1,5 +1,6 @@
 package com.exam.service;
 
+import com.exam.model.Role;
 import com.exam.model.User;
 import com.exam.model.UserRole;
 
@@ -14,5 +15,5 @@ public interface UserService {
     public void deleteUser(Long userId);
 
 
-
+    Role getRoleByName(String admin);
 }
